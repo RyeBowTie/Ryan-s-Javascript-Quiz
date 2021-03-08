@@ -1,0 +1,107 @@
+
+:root {
+--light-cornflower-blue: #88ccf1ff;
+--columbia-blue: #c1dff0ff;
+--blue-munsell: #3587a4ff;
+--oxford-blue: #102542ff;
+--dark-jungle-green: #1e2019ff;
+}
+
+html {
+    font-size: 24px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    background-color: var(--columbia-blue);
+}
+header {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--oxford-blue);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 75%;
+    border: .25rem solid var(--dark-jungle-green);
+    border-radius: 1rem;
+    color: var(--columbia-blue);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    padding: 1rem;
+}
+
+h3 {
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+
+body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue-munsell);
+    border-left: 4px solid var(--oxford-blue);
+    border-right: 4px solid var(--oxford-blue);
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--dark-jungle-green);
+    border-radius: 5px;
+    background-color: var(--light-cornflower-blue);
+    box-shadow: 0 1rem 1rem 1rem var(--oxford-blue);
+    padding: 1.6rem;
+    margin: 4.5rem;
+}
+
+input {
+    padding: .5rem;
+    margin: 1rem;
+    min-width: 75%;
+    max-width: fit-content;
+    background-color: var(--columbia-blue);
+    border: 3px solid var(--dark-jungle-green);
+    border-radius: 5px;
+    font-size: .75rem;
+}
+
+input:focus {
+    box-shadow: inset 2px 2px 2px var(--oxford-blue);
+}
+
+@media screen and (max-width: 1080px) {
+    html {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    main {
+        padding: 1%;
+        box-shadow: none;
+        margin: 0.25rem;
+    }
+    
+    h2 {
+        display: none;
+    }
+    
+    input {
+        padding: 1%;
+        margin: 1%;
+    }
+}
