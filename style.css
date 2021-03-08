@@ -1,4 +1,3 @@
-
 :root {
 --light-cornflower-blue: #88ccf1ff;
 --columbia-blue: #c1dff0ff;
@@ -13,6 +12,7 @@ html {
     margin-right: 10rem;
     background-color: var(--columbia-blue);
 }
+
 header {
     display: flex;
     flex-flow: column;
@@ -43,7 +43,6 @@ h3 {
     padding: 1rem;
 }
 
-
 body {
     display: flex;
     flex-flow: column;
@@ -65,7 +64,21 @@ main {
     background-color: var(--light-cornflower-blue);
     box-shadow: 0 1rem 1rem 1rem var(--oxford-blue);
     padding: 1.6rem;
-    margin: 4.5rem;
+    margin: 2rem;
+    text-align: center;
+}
+
+section {
+    border-top: 5px solid var(--dark-jungle-green) ;
+}
+
+#startTimer {
+    background-color: var(--oxford-blue);
+    color: var(--columbia-blue);
+}
+
+#startTimer:focus {
+    box-shadow: inset 10px 10px 10px var(--blue-munsell);
 }
 
 input {
