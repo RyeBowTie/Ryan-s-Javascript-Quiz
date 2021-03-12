@@ -1,49 +1,20 @@
 var startTimer = document.getElementById("startTimer");
+var question = document.getElementById("question");
 var answer1 = document.getElementById("answer1");
 var answer2 = document.getElementById("answer2");
 var answer3 = document.getElementById("answer3");
 var answer4 = document.getElementById("answer4");
 
-
-var timeRemaining = 5;
-
+var answerButtons = document.querySelectorAll(".answer");
+var timeRemaining = 60;
+var WinCount = 0;
 startTimer.addEventListener("click", timer);
 
 
-questions = [
-            {   question1:"Question 1",
-                answer11: "answer 1.1",
-                answer21: "answer 2.1",
-                answer31: "answer 3.1",
-                answer41: "answer 4.1",
-                // CorrectAnswer1: answer21,
-            },
-            {   question2: "Question 2",
-                answer12: "answer 1.2",
-                answer22: "answer 2.2",
-                answer32: "answer 3.2",
-                answer42: "answer 4.2",
-                // CorrectAnswer2: answer12,
-            },
-            {   question3: "Question 3",
-                answer13: "answer 1.3",
-                answer23: "answer 2.3",
-                answer33: "answer 3.3",
-                answer43: "answer 4.3",
-                // CorrectAnswer2: answer33,
-            },
-            {   question4: "Question 4",
-                answer14: "answer 1.4",
-                answer24: "answer 2.4",
-                answer34: "answer 3.4",
-                answer44: "answer 4.4",
-                // CorrectAnswer2: answer14,
-            },
-        ]
-
-console.log(questions);
+var questionOne = ["First Question", "First answer", "second Answer", "Third answer", "Forth Answer"];
 
 function timer() {
+    displayQuestionOne();
     var timerInterval = setInterval(function(){
     startTimer.value = `${timeRemaining} seconds left.`;
     timeRemaining--;
@@ -55,4 +26,25 @@ function timer() {
         return
     }
     }, 1000);
+
 };
+
+function displayQuestionOne() {
+    question.textContent = questionOne[0];
+    answer1.value = questionOne[1]
+    answer2.value = questionOne[2]
+    answer3.value = questionOne[3]
+    answer4.value = questionOne[4]
+    checkAnswer();
+};
+
+function checkAnswer() {
+    if (answerButtons.value === questionOne[2]) {
+        WinCount++
+    } else {
+        timeRemaining - 10;
+    }
+    
+};
+
+console.log(WinCount);
