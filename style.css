@@ -90,7 +90,18 @@ input {
     border: 3px solid var(--dark-jungle-green);
     border-radius: 5px;
     font-size: .75rem;
+    text-align: center;
 }
+.question-box {
+    display: none;
+}
+
+#startTimer {
+    display: none;
+}
+/* .submit-score {
+    display: none;
+} */
 
 input:focus {
     box-shadow: inset 2px 2px 2px var(--oxford-blue);
