@@ -4,11 +4,15 @@ var answer1 = document.getElementById("answer1");
 var answer2 = document.getElementById("answer2");
 var answer3 = document.getElementById("answer3");
 var answer4 = document.getElementById("answer4");
+var initials = document.getElementById("initials");
+var submit = document.getElementById("submit");
+var leaderboard = document.getElementById('leaderboard-list')
+
 
 var answerButtons = document.querySelectorAll(".answer");
 
-var timeRemaining = 60;
-// var winCount = 0;
+var timeRemaining =30;
+var winCount = 0;
 var questionCount = 0;
 
 startTimer.addEventListener("click", timer);
@@ -16,7 +20,7 @@ answer1.addEventListener("click", checkAnswer);
 answer2.addEventListener("click", checkAnswer);
 answer3.addEventListener("click", checkAnswer);
 answer4.addEventListener("click", checkAnswer);
-
+sumbit.addEventListener("click", displayLeaderboard);
 
 
 function timer() {
@@ -50,7 +54,7 @@ function displayQuestion() {
 };
 
 function checkAnswer(event) {
-    var winCount = 0;
+    // var winCount = 0;
     if (event.target.value === answers[questionCount]) {
         winCount++;
         console.log(winCount)
@@ -64,10 +68,12 @@ function checkAnswer(event) {
 };
 
 function endGame () {
-
+    console.log("rejkgreg")
 };
 
-console.log(answer1.value);
+function displayLeaderboard () {
+
+}
 
 var questions = [
     {   question:"Which is NOT a primitive data type?",
@@ -101,5 +107,3 @@ var questions = [
 
 var answers = ["Object", "if () {};", "||", "set"]
 
-console.log(questions[0].question);
-console.log(timeRemaining);
