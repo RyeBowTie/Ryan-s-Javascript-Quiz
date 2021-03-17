@@ -10,25 +10,25 @@
 </head>
 <header>
     <h1>Ryan's Javascript Quiz</h1>
-    <h2>Anwer these skill testing questions.</h2>
+    <h2>Answer these skill testing questions.</h2>
 </header>
 <body>
     <main>
         <input type="button" id="startTimer" value="Start">
-        <section class="question-box">
+        <section class="question-box" id="question-box">
             <h3 id="question">Is this an example question?</h3>
             <input type="button" id="answer1" value="answer1" class="answer">
             <input type="button" id="answer2" value="answer2" class="answer">
             <input type="button" id="answer3" value="answer3" class="answer">
             <input type="button" id="answer4" value="answer4" class="answer">
         </section>
-        <section class="submit-score">
+        <section class="submit-score" id="submit-score">
             <input type="text" placeholder="Enter Initials" id="initials">
             <input type="submit" id="submit">
         </section>
-        <section class="leaderboard">
-            <ul>
-
+        <input type="submit" id="reset" value="Restart">
+        <section class="leaderboard" id="leaderboard"> 
+            <ul id="leaderboard-list">
             </ul>
         </section>
     </main>
