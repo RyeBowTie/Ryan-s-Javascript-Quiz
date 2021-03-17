@@ -91,7 +91,7 @@ function endGame () {
     submit.setAttribute("style", "display: inline-block;");  
 };
 
-// Save and Dispaly Data Function ----------------------------------------------------------
+// Save and Display Data Function ----------------------------------------------------------
 
 function displayLeaderboard (event) {
     event.stopPropagation()
