@@ -1,3 +1,6 @@
+
+//  HTML Elements --------------------------------------------------------------------------------
+
 var startTimer = document.getElementById("startTimer");
 var question = document.getElementById("question");
 var answer1 = document.getElementById("answer1");
@@ -12,18 +15,15 @@ var leaderboardSection = document.getElementById("leaderboard")
 var leaderboard = document.getElementById('leaderboard-list')
 var reset = document.getElementById("reset");
 
+//  Global Variables ---------------------------------------------------------------------------
 
-
-var timeRemaining =30;
+var timeRemaining = 30;
 var winCount = 0;
 var questionCount = 0;
-var savedData = [
-    {
-    initialsSaved: initials.value,
-    score: winCount,
-    },
-];
-console.log(savedData)
+
+//  Event Listeners -----------------------------------------------------------------------------
+
+
 startTimer.addEventListener("click", timer);
 answer1.addEventListener("click", checkAnswer);
 answer2.addEventListener("click", checkAnswer);
@@ -31,6 +31,8 @@ answer3.addEventListener("click", checkAnswer);
 answer4.addEventListener("click", checkAnswer);
 submit.addEventListener("click", displayLeaderboard);
 reset.addEventListener("click", resetFunction);
+
+// Timer Function ----------------------------------------------------------------------------------
 
 function timer() {
     displayQuestion();
@@ -49,6 +51,8 @@ function timer() {
 
 };
 
+// Question Function ------------------------------------------------------------------------------
+
 function displayQuestion() {
     
     if (questionCount === questions.length) {
@@ -63,77 +67,78 @@ function displayQuestion() {
     
 };
 
+// CHeck ANswers Functions -----------------------------------------------------------------
+
 function checkAnswer(event) {
     
     if (event.target.value === answers[questionCount]) {
         winCount++;
-        console.log(winCount)
     } else {
         timeRemaining = timeRemaining - 10;
-        console.log(timeRemaining);
     };
     questionCount++;
     displayQuestion();
     
 };
 
-function endGame (event) {
-    
+// Display End Game Function ---------------------------------------------------------------------
+
+function endGame () {
     startTimer.setAttribute("style", "display: none;");
     questionBox.setAttribute("style", "display: none;");
     initials.setAttribute("style", "display: inline-block;");
     submitScoreBox.setAttribute("style", "display: inline-block;");
-    submit.setAttribute("style", "display: inline-block;");
-    
+    submit.setAttribute("style", "display: inline-block;");  
 };
 
-function displayLeaderboard (event) {
-    event.stopPropagation();
+// Save and Dispaly Data Function ----------------------------------------------------------
 
-    localStorage.setItem("initials", JSON.stringify(savedData));
+function displayLeaderboard (event) {
+    event.stopPropagation()
+
+    var savedScores = JSON.parse(localStorage.getItem("savedScores")) || [];
     
-    console.log(pastScoresArray);
+    var savedDataObject = {
+        initials: initials.value,
+        score: winCount,
+    };
+
+    savedScores.push(savedDataObject);
+    console.log(savedScores);
+    
+    
+    localStorage.setItem("savedScores", JSON.stringify(savedScores));
+
+    savedScores.forEach(element => {
+        liEl = document.createElement("li");
+        liEl.textContent = "Initials: " + element.initials + "   ||   Score: " + element.score;
+        leaderboard.appendChild(liEl);
+    });
+
+
+    // Create li Elements
     var scoreListItem = document.createElement("li");
-    var scoreStored = scoreListItem.textContent = "Initials: " + initials.value + "    ||    Score: " + winCount;
+    scoreListItem.textContent = "Initials: " + initials.value + "   ||   Score: " + winCount;
     leaderboard.appendChild(scoreListItem);
-   
+    // Show Elements
     reset.setAttribute("style", "display: inline-block;")
     leaderboard.setAttribute("style", "display: inline-block; padding: 1rem;")
     leaderboardSection.setAttribute("style", "display: inline-block;")
+    scoreListItem.setAttribute("style", "display: inline-block;");
+    // Hide Elements
     initials.setAttribute("style", "display: none;");
     submitScoreBox.setAttribute("style", "display: none;");
     submit.setAttribute("style", "display: none;");
-    scoreListItem.setAttribute("style", "display: inline-block;");
+    
 };   
 
-function resetFunction () {
-    
-    
-    
-    
-    // var scoreListItem = document.createElement("li");
-    // var scoreStored = scoreListItem.textContent = "Initials: " + pastScores.initialsSaved + "    ||    Score: " + pastScores.score;
-    // leaderboard.appendChild(scoreListItem);
+//  Page Reload --------------------------------------------------------------------
+
+function resetFunction () {    
     location.reload();
 };
 
-
-var pastScores = JSON.parse(localStorage.getItem("initials"));
-// console.log(pastScoresArray);
-// if (pastScores !== null) {  
-//     pastScoresArray = pastScores;
-// var scoreListItem = document.createElement("li");
-// var scoreStored = scoreListItem.textContent = "Initials: " + savedData.initialsSaved + "    ||    Score: " + pastScores.score;
-// leaderboard.appendChild(scoreListItem);
-// };
-
-// for (var i = 0; i < pastScoresArray.length; i++){
-//     var pastScoresArr = pastScoresArray[i]
-//     var scoreListItem = document.createElement("li");
-//     var scoreStored = scoreListItem.textContent = "Initials: " + pastScores.initialsSaved + "    ||    Score: " + pastScores.score;
-//     leaderboard.appendChild(scoreListItem);
-// }
-
+//  Questions Array -------------------------------------------------------------------------
 
 var questions = [
     {   question:"Which is NOT a primitive data type?",
@@ -164,6 +169,8 @@ var questions = [
         
     },
 ];
+
+// Answers Array --------------------------------------------------------------------------
 
 var answers = ["Object", "if () {};", "||", "set"]
 
